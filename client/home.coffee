@@ -1,3 +1,13 @@
+otherId (game) ->
+  game.currentTurn[(if game.currentTurn[0] is Meteor.userId() then 1 else 0)];
+
+Template.gameList.helpers
+    games: ->
+      Games.find(inProgress: true).map (game) ->
+        game.otherPlayer = Meteor.users.findOne(otherId(game)).username
+        game.started = moment(game.started).fromNow()
+        game
+
 Template.userList.helpers
   users: ->
     myid = Meteor.userId()
@@ -5,7 +15,7 @@ Template.userList.helpers
 
     Games.find
       inProgress: true
-    .forEach (game) -> cantPlayAgainst.push(game.currentTurn[(if game.currentTurn[0] is myid then 0 else 1)])
+    .forEach (game) -> cantPlayAgainst.push(otherId(game))
       return
 
     Meteor.users.find
