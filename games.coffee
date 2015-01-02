@@ -35,3 +35,8 @@ games = {
 }
 
 ###
+
+Meteor.methods
+  createGame: (otherPlayerId) ->
+    game = GameFactory.createGame([Meteor.userId(), otherPlayerId])
+    Games.insert(game)
