@@ -1,7 +1,7 @@
-if Meteor.isClient
-  Router.configure layoutTemplate: "layout"
-  Router.map ->
-    @route "home",
-      path: "/"
-
-    return
+# if Meteor.isClient
+#   Router.configure layoutTemplate: "layout"
+#   Router.map ->
+#     @route "home",
+#       path: "/"
+#
+#     return
