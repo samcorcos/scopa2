@@ -6,6 +6,17 @@ GameFactory.createGame = (playerIds) ->
 
   GameFactory.dealPlayers players, deck
 
+  table = dealTable(deck)
+
+  {
+    deck: deck
+    players: players
+    table: table
+    currentTurn: playerIds
+    inProgress: true
+    started: new Date()
+  }
+
 createDeck = ->
   suits = ['Cups', 'Coins', 'Swords', 'Clubs']
   cards = []
@@ -38,3 +49,14 @@ createPlayers = (ids) ->
         scopa: 0
     return
   return 0
+
+GameFactory.dealPlayers = (players, deck) ->
+  for i in [0...3] by 1
+    Object.keys(players).forEach (id) ->
+      players[id].hand.push(deck.shift()) # remember, hand is the cards the current players has. This is saying "push to the current person's hand the current (shift) top card of the deck"
+      return
+  return
+
+dealTable = (deck) ->
+  c = deck.shift.bind(deck)
+  [c(), c(), c(), c()]
