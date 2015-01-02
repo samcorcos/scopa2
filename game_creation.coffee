@@ -4,6 +4,8 @@ GameFactory.createGame = (playerIds) ->
   deck = createDeck()
   players = createPlayers(playerId)
 
+  GameFactory.dealPlayers players, deck
+
 createDeck = ->
   suits = ['Cups', 'Coins', 'Swords', 'Clubs']
   cards = []
@@ -21,3 +23,18 @@ createDeck = ->
         name: name
     return
   _.shuffle(cards)
+
+createPlayers = (ids) ->
+  o = {}
+  ids.forEach (id) ->
+    o[id]
+      hand: []
+      pile: []
+      score:
+        mostCoins: 0
+        mostCards: 0
+        setteBello: 0
+        primera: 0
+        scopa: 0
+    return
+  return 0
