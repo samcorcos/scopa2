@@ -14,6 +14,24 @@ if Meteor.isClient
 
 ###
 
+This is what one of our game records will look like:
 
+games = {
+  currentTurn = [],
+  deck: [],
+  table: [],
+  players: {
+    a: {
+      hand: [],
+      pile: [],
+      score: {}
+    },
+    b: {}
+  }
+  inProgress: true/false,
+  started: date,
+  finished: date,
+  winner: id
+}
 
 ###
