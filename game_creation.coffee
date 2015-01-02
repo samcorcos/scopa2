@@ -2,7 +2,7 @@
 
 GameFactory.createGame = (playerIds) ->
   deck = createDeck()
-  players = createPlayers(playerIds)
+  players = createPlayers(playerIdsd)
 
   GameFactory.dealPlayers players, deck
 

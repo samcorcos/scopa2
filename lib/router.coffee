@@ -4,4 +4,4 @@ Router.configure
 Router.map ->
     @route 'home',
       path: '/'
-      return
+    return
